@@ -1,0 +1,33 @@
+@use '../variableCSS/'as *;
+@use './pseudo'as *;
+@use './breakpoints'as *;
+
+@mixin sectionTitle($textAlign, $top, $color, $width:50%, $margin:auto, $content:'', $pos:absolute) {
+  text-align: $textAlign;
+  font-size: clamp(#{map-get($font-size, h2)}, 5vw, #{map-get($font-size-desktop, h2)});
+  color: map-get($colors-hsl, secondary, $color);
+  position: relative;
+  width: max-content;
+  margin: $margin;
+  margin-bottom: $mb-4;
+
+  @include pseudo() {
+    content: $content;
+    position: $pos;
+    top: $top;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    width: $width;
+    background: map-get($colors-hsl, secondary, $color);
+    border-radius: .75rem;
+  }
+}
+
+@mixin sectionSubtitle($textAlign, $color, $margin:auto) {
+  text-align: $textAlign;
+  font-size: clamp(#{map-get($font-size, h3)}, 5vw, #{map-get($font-size-desktop, h3)});
+  color: map-get($colors-hsl, secondary, $color);
+  width: max-content;
+  margin: $margin;
+}

@@ -1,0 +1,36 @@
+@use 'sass:map';
+
+$breakpoints:(small:36em,
+  medium:49em,
+  large:55em,
+  extraLarge:90em);
+
+@mixin mqMin($key) {
+  $size: map-get($breakpoints, $key);
+
+  @media(min-width:$size) {
+    @content;
+  }
+}
+
+@mixin mqMax($key) {
+  $size: map-get($breakpoints, $key);
+
+  @media(max-width:$size) {
+    @content;
+  }
+}
+
+@mixin breakPointsAnimations($minwidth: 50em, $maxWidth: landscape, $minHeight: 20em, $maxHeight: 50em) {
+  @media screen and (min-height: $minHeight) and (max-height: $maxHeight) {
+    @media screen and (min-width: $minwidth) and (orientation: $maxWidth) {
+      @content;
+    }
+  }
+}
+
+@mixin breakPointsIp10($minHeight:50em, $minWidth:23.4em) {
+  @media screen and(min-height: $minHeight) and (min-width: $minWidth) {
+    @content
+  }
+}

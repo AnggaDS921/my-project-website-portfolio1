@@ -1,0 +1,127 @@
+@use '../abstracts/index'as *;
+
+@include mqMax(medium) {
+  .home {
+    &__container {
+      height: calc(100vh - #{$navbar-height});
+    }
+  }
+}
+
+.home {
+  position: relative;
+
+  &__data {
+    margin-top: $mb-2;
+    z-index: $z-tooltip;
+  }
+
+  &__title {
+    margin-bottom: $mb-1;
+  }
+
+  &__description {
+    margin-bottom: $mb-2;
+  }
+
+  &__img-container {
+    width: 300px;
+    height: auto;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+  }
+
+  &__img {
+    position: relative;
+  }
+
+  &__object {
+    position: absolute;
+
+    &.circle {
+      z-index: -1;
+      top: 15vh;
+      left: 18vw;
+      width: 30%;
+    }
+
+    &.triangle {
+      top: 6vh;
+      right: 10vw;
+      width: 25%;
+    }
+
+    &.square {
+      bottom: 10vh;
+      left: -10vw;
+      width: 55%;
+    }
+  }
+}
+
+@include breakPointsIp10() {
+  .home {
+    &__img-container {
+      width: 350px;
+    }
+  }
+}
+
+@include mqMin(small) {
+  .home {
+    height: 60vh;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 300px 1fr;
+
+    &__img-container {
+      width: 380px;
+    }
+  }
+}
+
+@include mqMin(large) {
+  .home {
+    height: calc(100vh - #{$navbar-height});
+
+    &__data {
+      width: max-content;
+    }
+
+    &__object {
+      &.square {
+        left: -5vw;
+      }
+
+      &.circle {
+        top: 18vh;
+        left: 5vw;
+      }
+
+      &.triangle {
+        right: 5vw;
+        top: 8vh;
+      }
+    }
+  }
+}
+
+@media screen and(min-height:84.375em) and (min-width: 63em) {
+  .home {
+    height: 55vh;
+
+    &__object {
+      &.circle {
+        top: 8vh;
+        left: 8vw;
+      }
+
+      &.triangle {
+        right: 5vw;
+        top: 3.5vh;
+      }
+    }
+  }
+}

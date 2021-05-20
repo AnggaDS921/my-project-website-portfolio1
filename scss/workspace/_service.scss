@@ -1,0 +1,51 @@
+@use '../abstracts/index'as *;
+
+.service {
+  &__container {
+    row-gap: 2.5rem;
+    text-align: center;
+  }
+
+  &__description {
+    margin-top: $mb-2;
+  }
+
+  &__content {
+    display: grid;
+    gap: $mb-3;
+  }
+
+  &__card {
+    @include cards($px: 1.75rem, $py:1.25rem, $shadow:0 10px 19px 1px rgba(#C6DFF7, .15), $color: rgba(map-get($colors-hsl, neutral, 700), .8), $br:.5rem, $shadowHover:0 14px 22px 1px rgba(#C6DFF7, .25), $transition:.5s);
+
+    &-svg {
+      margin-bottom: $mb-2;
+      width: 60px;
+      height: 60px;
+    }
+
+    &.editing {
+      background-color: #E4C1F9;
+    }
+
+    &.web {
+      background-color: #FCF6BD;
+    }
+
+    &.ui {
+      background-color: #A9DEF9;
+    }
+
+    &.logo {
+      background-color: #FF99C8;
+    }
+  }
+}
+
+@include mqMin(small) {
+  .service {
+    &__content {
+      grid-template-columns: repeat(2, 1fr)
+    }
+  }
+}

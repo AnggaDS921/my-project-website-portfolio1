@@ -1,0 +1,111 @@
+@use '../variableCSS/'as *;
+@use './pseudo'as *;
+@use './breakpoints'as *;
+
+@mixin btn($color, $backgroundColor, $fontSize, $fontWeight, $duration, $py: .5rem, $px: 1rem, $colorHover, $backgroundHover: transparent) {
+    display: inline-block;
+    color: $color;
+    background: $backgroundColor;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    padding: $py $px;
+    border-radius: .5rem;
+    border: 1px solid $backgroundColor;
+    transition: $duration;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: $colorHover;
+        background: $backgroundHover;
+        border: 1px solid $colorHover;
+    }
+}
+
+@mixin btnReverse($color, $backgroundColor, $fontSize, $fontWeight, $duration, $py: .5rem, $px: 1rem, $backgroundHover: transparent, $colorHover) {
+    display: inline-block;
+    color: $color;
+    background: $backgroundColor;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    padding: $py $px;
+    border-radius: .5rem;
+    border: 1px solid $color;
+    transition: $duration;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: $colorHover;
+        background: $backgroundHover;
+        border: 1px solid $backgroundHover;
+    }
+}
+
+@mixin btn2($color, $backgroundColor, $fontSize, $fontWeight, $duration, $pos, $py: .5rem, $px: 1rem, $btl: 0, $btr: 0, $bbr: 50%, $bbl: 50%) {
+    display: inline-block;
+    position: relative;
+    color: $color;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    padding: $py $px;
+    border-radius: .5rem;
+    border: 1px solid $backgroundColor;
+    overflow: hidden;
+    transition: $duration;
+    cursor: pointer;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 180%;
+        background: $backgroundColor;
+        z-index: -1;
+        transition: .5s;
+        #{$pos}: 0;
+        border-radius: $btl $btr $bbr $bbl;
+    }
+
+    &:hover {
+        color: $backgroundColor;
+    }
+
+    &:hover::after {
+        height: 0;
+    }
+}
+
+
+@mixin btnToTop($pos-x, $pos-y, $value-y, $padding, $color, $bgColor, $colorHvr, $bgHvr, $duration, $visibility:visible, $border:none) {
+    @include mqMax(medium) {
+        position: fixed;
+        #{$pos-y}: $value-y;
+        #{$pos-x}: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: $padding;
+        background-color: $bgColor;
+        color: map-get($colors-hsl, $color, 100);
+        border-radius: 50%;
+        font-size: 1.25rem;
+        border: $border solid map-get($colors-hsl, $bgColor, 400);
+        transition: $duration;
+        z-index: calc(#{$z-tooltip} + 10);
+        box-shadow: 0 2px 5px rgba(8, 48, 65, .5);
+        visibility: $visibility;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $bgHvr;
+            color: map-get($colors-hsl, $colorHvr, 100);
+        }
+    }
+}
+
+@mixin btnAppear($visibility, $pos) {
+    visibility: $visibility;
+    bottom: $pos;
+}

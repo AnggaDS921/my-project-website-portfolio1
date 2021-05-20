@@ -1,0 +1,110 @@
+@use '../abstracts/index'as *;
+
+.contact {
+  &__inputs {
+    margin-bottom: $mb-2;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: $mb-1;
+  }
+
+  &__input {
+    width: 100%;
+    padding: .75rem .5rem;
+    border-radius: .5rem;
+    background-color: map-get($colors-hsl, primary, 500);
+    box-shadow: 0 2px 6px 1px rgba(#C6DFF7, .15), 0 -2px 6px 1px rgba(#C6DFF7, .15);
+    outline: none;
+    border: none;
+    transition: .5s;
+    color: #fff;
+
+    &::placeholder {
+      color: map-get($colors-hsl, neutral, 300);
+      font-family: $body-font;
+      transition: .5s;
+    }
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 5px 9px 1px rgba(#C6DFF7, .15), 0 -5px 9px 1px rgba(#C6DFF7, .15)
+    }
+
+    &:hover::placeholder {
+      color: map-get($colors-hsl, neutral, 200);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  &__inputs-container {
+    display: grid;
+    column-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  &__followInfo {
+    display: flex;
+  }
+
+  &__info {
+    flex: 40%;
+    margin-bottom: $mb-2;
+  }
+
+
+  &__info-description {
+    font-size: map-get($font-size, small);
+    display: block;
+  }
+
+  &__title {
+    margin-bottom: $mb-2;
+    color: map-get($colors-hsl, secondary, 100);
+  }
+
+  &__info-social {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: $mb-2;
+  }
+
+  &__info-icon {
+    margin-right: $mb-2;
+    font-size: 1.25rem;
+  }
+
+  &__follow {
+    text-align: center;
+  }
+}
+
+@include mqMin(medium) {
+  .contact {
+    &__container {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 1.5rem;
+      align-items: start;
+    }
+
+    &__form {
+      grid-column: 2/4;
+    }
+
+    &__followInfo {
+      flex-direction: column;
+      justify-self: start;
+      grid-column: 1/2;
+      order: -1;
+    }
+
+    &__follow {
+      text-align: initial;
+    }
+
+  }
+}

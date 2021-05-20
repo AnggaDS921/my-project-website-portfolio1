@@ -1,0 +1,57 @@
+@use '../abstracts/index'as *;
+
+.bd-container {
+  width: calc(100% - 2rem);
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.bd-grid {
+  display: grid;
+  row-gap: 1.5rem;
+}
+
+.section {
+  padding: 4rem 0 2rem
+}
+
+.section-title {
+  @include sectionTitle(center, 2.25rem, 100);
+
+  @include mqMin(small) {
+    @include sectionTitle(center, 2.75rem, 100);
+  }
+}
+
+.social-icon {
+  &-hover {
+    margin-right: $mb-1;
+    color: map-get($colors-hsl, neutral, 300);
+    font-size: 1.35rem;
+    transition: .5s;
+
+    &:hover {
+      color: map-get($colors-hsl, neutral, 100);
+    }
+  }
+}
+
+.section-subtitle {
+  @include sectionSubtitle(center, 400);
+}
+
+.btn {
+  @include btn(#fff, map-get($colors-hsl, secondary, 400), map-get($font-size, smaller), map-get($font-weight, semi-bold), .5s, .45rem, 1.5rem, map-get($colors-hsl, secondary, 100));
+
+  @include mqMin(small) {
+    @include btn(#fff, map-get($colors-hsl, secondary, 400), map-get($font-size, normal), map-get($font-weight, semi-bold), .5s, .45rem, 1.5rem, map-get($colors-hsl, secondary, 100));
+  }
+}
+
+.btnReverse {
+  @include btnReverse(map-get($colors-hsl, secondary, 100), transparent, map-get($font-size, smaller), map-get($font-weight, semi-bold), .5s, .45rem, 1.5rem, map-get($colors-hsl, secondary, 400), #fff);
+
+  @include mqMin(small) {
+    @include btnReverse(map-get($colors-hsl, secondary, 100), transparent, map-get($font-size, normal), map-get($font-weight, semi-bold), .5s, .45rem, 1.5rem, map-get($colors-hsl, secondary, 400), #fff);
+  }
+}

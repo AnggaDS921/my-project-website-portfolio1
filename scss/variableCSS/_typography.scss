@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap');
+
+$body-font:'poppins',
+sans-serif;
+
+$font-size: (biggest:2.25rem,
+    h1:1.5rem,
+    h2:1.25rem,
+    h3:1rem,
+    normal:.900rem,
+    small:.813rem,
+    smaller:.75rem,
+);
+
+$font-size-desktop: (biggest:3.25rem,
+    h1:2.25rem,
+    h2:1.5rem,
+    h3:1.25rem,
+    normal:1rem,
+    small:.875rem,
+    smaller:.813rem,
+);
+
+$font-weight:(thin: 200,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semi-bold: 600,
+    bold: 600,
+);

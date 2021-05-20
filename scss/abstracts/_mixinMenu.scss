@@ -1,0 +1,49 @@
+@use '../variableCSS/'as *;
+@use './pseudo'as *;
+
+@mixin menuHover($duration, $width, $height, $top, $color, $borderRadius:0, $weigth:normal) {
+  transition: $duration;
+  position: relative;
+
+  @include pseudo() {
+    content: '';
+    position: absolute;
+    top: $top;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $width;
+    height: $height;
+    border-radius: $borderRadius;
+    background-color: map-get($colors-hsl, $color, 100);
+    transition: $duration;
+    opacity: 0;
+  }
+
+  &:hover {
+    font-weight: map-get($font-weight, $weigth);
+    color: map-get($colors-hsl, $color, 100);
+
+    @include pseudo() {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin menuActive($duration, $width, $height, $top, $color, $borderRadius:0, $weigth:normal) {
+  position: relative;
+  color: map-get($colors-hsl, $color, 100);
+  transition: $duration;
+
+  @include pseudo() {
+    content: '';
+    position: absolute;
+    top: $top;
+    left: 50%;
+    transform: translateX(-50%);
+    width: $width;
+    height: $height;
+    border-radius: $borderRadius;
+    background-color: map-get($colors-hsl, $color, 100);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,117 @@
+@use '../abstracts/index'as *;
+
+@include mqMax(medium) {
+  .btn-to-top {
+    @include btnToTop(right, bottom, -100%, 1.25rem, neutral, map-get($colors-hsl, secondary, 700), neutral, transparent, .5s, hidden)
+  }
+}
+
+@include mqMin(medium) {
+  .btn-to-top {
+    display: none;
+  }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: $z-fixed;
+  background-color: map-get($colors-hsl, primary, 500);
+  box-shadow: 0 15px 19px 1px rgba(#C6DFF7, .15);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $navbar-height;
+  }
+
+  @include mqMax(medium) {
+    &__menu {
+      position: absolute;
+      right: -100%;
+      top: $navbar-height;
+      height: calc(100vh - #{$navbar-height});
+      width: 50%;
+      background-color: map-get($colors-hsl, secondary, 600);
+      transition: .5s;
+    }
+
+    &__list {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 45vh;
+    }
+
+    &__item {
+      opacity: 0;
+    }
+  }
+
+  &__link,
+  &__logo,
+  &__toggle {
+    color: map-get($colors-hsl, neutral, 200);
+  }
+
+  a.navbar__logo,
+  .navbar__toggle {
+    font-size: clamp(#{map-get($font-size, normal)}, 4vw, #{map-get($font-size-desktop, h3)});
+    cursor: pointer;
+  }
+
+  a.navbar__link {
+    font-size: clamp(#{map-get($font-size, normal)}, 2vw, #{map-get($font-size-desktop, small)});
+
+    @include menuHover(.5s, 4px, 4px, 1.5rem, secondary, 50%)
+  }
+
+  .navbar__link.active-link {
+    @include menuActive(.5s, 4px, 4px, 1.5rem, secondary, 50%)
+  }
+}
+
+// JAVASCRIPT - CLASS header //
+.show-menu {
+  right: 0;
+}
+
+.btn-appear {
+  @include btnAppear(visible, 1rem)
+}
+
+// JAVASCRIPT - CLASS NAVBAR //
+
+@keyframes linksFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@include mqMin(medium) {
+
+  .navbar {
+    &__toggle {
+      display: none;
+    }
+
+    &__menu {
+      width: 45%;
+    }
+
+    &__list {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,0 +1,153 @@
+@use '../abstracts/index'as *;
+
+.works {
+  padding: 4rem 0 0 0;
+
+  &__data {
+    text-align: center;
+  }
+
+  &__description {
+    margin-top: $mb-2;
+  }
+
+  &__filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1.5rem 0;
+  }
+
+  .filter-element {
+    background-color: map-get($colors-hsl, secondary, 700);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 20px;
+    margin: 6px;
+    cursor: pointer;
+    transition: .5s;
+  }
+
+  .filter-element:hover {
+    background-color: map-get($colors-hsl, secondary, 500);
+  }
+
+  .filter-active {
+    background-color: transparent;
+    color: map-get($colors-hsl, secondary, 100);
+  }
+
+  &__gallery-container {
+    width: 100%;
+    margin: 0 auto;
+    column-count: 3;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    padding: 2.5rem 0 0 0;
+  }
+
+  .gallery-image {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .gallery-image.hide-image {
+    display: none;
+  }
+
+  @include mqMax(medium) {
+    &__gallery-container {
+      column-count: 2;
+    }
+  }
+
+  @include mqMax(small) {
+    &__gallery-container {
+      column-count: 1;
+    }
+  }
+
+  .running-animation {
+    animation: fade-in-show 1s ease forwards;
+  }
+
+  @keyframes fade-in-show {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  hr {
+    position: absolute;
+    width: 100%;
+    border-top: 2px solid map-get($colors-hsl, secondary, 100);
+    left: 0;
+  }
+}
+
+.worksExp {
+  background-color: map-get($colors-hsl, secondary, 700);
+  padding: 0 0 2rem 0;
+
+  &__data {
+    padding-top: $mb-6;
+    margin: $mb-6 0;
+    text-align: center;
+  }
+
+  &__description {
+    margin-top: $mb-2;
+  }
+
+  &__container {
+    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  &__card {
+    @include cards(map-get($colors-hsl, primary, 500), 1.75rem, 1.25rem, 0 10px 19px 1px rgba(#C6DFF7, .15), #fff, .5rem, translateY(-10px), 0 14px 22px 1px rgba(#C6DFF7, .25), .5s);
+
+    span {
+      color: map-get($colors-hsl, neutral, 200);
+    }
+  }
+}
+
+.projectInMind {
+  box-shadow: 0 15px 19px 1px rgba(#C6DFF7, .15), 0 -15px 19px 1px rgba(#C6DFF7, .15);
+
+  h2 {
+    color: white;
+
+    &::before {
+      background-color: white;
+    }
+  }
+
+  &__container {
+    display: grid;
+    justify-items: center;
+  }
+
+
+  &__btn {
+    color: map-get($colors-hsl, neutral, 600);
+    background-color: #fff;
+    border-color: #fff;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background-color: transparent;
+      border-color: #fff;
+    }
+  }
+}

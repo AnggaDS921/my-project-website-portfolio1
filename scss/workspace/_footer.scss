@@ -1,0 +1,38 @@
+@use '../abstracts/index'as *;
+
+.footer {
+
+  &__title,
+  &__description {
+    margin-bottom: $mb-2;
+  }
+
+  &__container {
+    text-align: center;
+  }
+
+  &__icon-color {
+    color: map-get($colors-hsl, secondary, 100);
+    margin: 0 $mb-3;
+
+    &:hover {
+      color: map-get($colors-hsl, primary, 400);
+    }
+  }
+
+  &__copy {
+    margin-top: $mb-6;
+
+    &-color {
+      color: map-get($colors-hsl, secondary, 100);
+    }
+  }
+}
+
+@include mqMin(small) {
+  .footer {
+    &__description {
+      padding: 0 2rem;
+    }
+  }
+}

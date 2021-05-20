@@ -1,0 +1,49 @@
+@use '../abstracts/index'as *;
+
+.about,
+.works,
+.footer {
+  background-color: map-get($colors-hsl, primary, 500);
+  box-shadow: 0 15px 19px 1px rgba(#C6DFF7, .15), 0 -15px 19px 1px rgba(#C6DFF7, .15);
+}
+
+@include mqMin(large) {
+
+  .service__data,
+  .works__data,
+  .worksExp__data,
+  .footer__data {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@include breakPointsAnimations() {
+  .anim {
+    opacity: 0;
+  }
+
+  @keyframes anim1 {
+    from {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes anim1 {
+    from {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}

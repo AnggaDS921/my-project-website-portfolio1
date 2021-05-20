@@ -1,0 +1,11 @@
+@use 'reset/reset';
+@use 'reset/classCSS';
+
+@use './workspace/all';
+@use './workspace/navbar';
+@use './workspace/home';
+@use './workspace/about';
+@use './workspace/service';
+@use './workspace/works';
+@use './workspace/contact';
+@use './workspace/footer';

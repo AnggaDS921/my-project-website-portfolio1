@@ -1,0 +1,55 @@
+@use 'sass:map';
+
+$colors:(primary:hsl(200, 18%, 26%),
+    primary-dark:#0077C2,
+    secondary: #0d2330,
+    secondary-dark: #000009,
+    body: hsl(198, 42%, 11%),
+    text: hsl(197, 6%, 78%),
+    text-light: hsl(210, 7%, 94%),
+    text-dark: #373737);
+
+$colors-hsl:(primary:(100:hsl(200, 18%, 100%),
+        200:hsl(200, 18%, 80%),
+        300:hsl(200, 18%, 65%),
+        400:hsl(200, 18%, 50%),
+        500:hsl(200, 18%, 30%),
+        600:hsl(200, 18%, 20%),
+        700:hsl(200, 18%, 10%),
+    ),
+    secondary:(100: hsl(203, 100%, 75%),
+        200:hsl(203, 100%, 60%),
+        300:hsl(203, 100%, 50%),
+        400:hsl(203, 100%, 35%),
+        500:hsl(203, 100%, 20%),
+        600:hsl(203, 100%, 15%),
+        700:hsl(203, 100%, 10%),
+    ),
+    neutral:(100:hsl(210, 7%, 94%),
+        200:hsl(210, 7%, 78%),
+        300:hsl(210, 7%, 65%),
+        400:hsl(210, 7%, 50%),
+        500:hsl(210, 7%, 40%),
+        600:hsl(210, 7%, 25%),
+        700:hsl(210, 7%, 15%),
+        800:hsl(210, 7%, 10%),
+        900:hsl(210, 7%, 5%)));
+
+// Dark theme 
+
+@mixin colorMode($light-mode: true) {
+    $light-bg: map-get($colors-hsl, neutral, 100);
+    $light-text: map-get($colors-hsl, neutral, 500);
+    $dark-bg: map-get($colors-hsl, neutral, 900);
+    $dark-text: map-get($colors-hsl, neutral, 100);
+
+    @if $light-mode {
+        background: $light-bg;
+        color: $light-text;
+    }
+
+    @else {
+        background: $dark-bg;
+        color: $dark-text;
+    }
+}

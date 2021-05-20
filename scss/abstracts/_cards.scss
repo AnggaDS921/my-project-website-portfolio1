@@ -1,0 +1,13 @@
+@mixin cards($backgroundColor:none, $py, $px, $shadow, $color, $br, $transform:none, $shadowHover, $transition) {
+  background-color: $backgroundColor;
+  padding: $py $px;
+  box-shadow: $shadow;
+  border-radius: $br;
+  color: $color;
+  transition: $transition;
+
+  &:hover {
+    transform: $transform !important;
+    box-shadow: $shadowHover;
+  }
+}

@@ -1,0 +1,8 @@
+@mixin darkTheme($color, $bgColor, $selectors...) {
+  @for $i from 0 to length($selectors) {
+    #{nth($selectors, $i + 1)} {
+      color: $color;
+      background-color: $bgColor;
+    }
+  }
+}
